@@ -15,28 +15,26 @@ import { Facebook } from "expo";
 // refactor
 
 export const facebookLogin = () => async dispatch => {
-  let token = await AsyncStorage.getItem("fb_token");
-  //         đợi cái này chạy xong mới tính tiếp
+  let token = await AsyncStorage.getItem('fb_token');
+
   if (token) {
-    // already login
-    dispatch({ type: FACEBOOK_LOGIN_SUCCESS });
+    // Dispatch an action saying FB login is done
+    dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token });
   } else {
-    // not login at all
-    fbLogin();
+    // Start up FB Login process
+    doFacebookLogin(dispatch);
   }
 };
 
-const fbLogin = async dispatch => {
-//   let { type, token } = await Facebook.logInWithReadPermissionsAsync("323404488095506",
-//   { permissions: ["public_profile"]} );
-  let result = await Facebook.logInWithReadPermissionsAsync("323404488095506",
-  { permissions: ['public_profile']} );
-  
-  console.log(result)
+const doFacebookLogin = async dispatch => {
+  let { type, token } = await Facebook.logInWithReadPermissionsAsync('196207057539134', {
+    permissions: ['public_profile']
+  });
 
   if (type === 'cancel') {
     return dispatch({ type: FACEBOOK_LOGIN_FAIL });
   }
-  await AsyncStorage.setItem("fb_token", token);
+
+  await AsyncStorage.setItem('fb_token', token);
   dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token });
 };
