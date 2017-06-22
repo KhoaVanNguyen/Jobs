@@ -1,16 +1,6 @@
 import { FACEBOOK_LOGIN_SUCCESS, FACEBOOK_LOGIN_FAIL } from "./type";
 import { AsyncStorage } from "react-native";
 import { Facebook } from "expo";
-// export const facebookLogin = () => {
-//     return async (dispatch) => {
-//         let token = await AsyncStorage.getItem('token');
-//         if (token){
-//             // already login
-//         }else {
-//             // not login at all
-//         }
-//     }
-// }
 
 // refactor
 
@@ -27,7 +17,7 @@ export const facebookLogin = () => async dispatch => {
 };
 
 const doFacebookLogin = async dispatch => {
-  let { type, token } = await Facebook.logInWithReadPermissionsAsync('196207057539134', {
+  let { type, token } = await Facebook.logInWithReadPermissionsAsync('323404488095506', {
     permissions: ['public_profile']
   });
 

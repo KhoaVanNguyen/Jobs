@@ -11,6 +11,7 @@ import MapScreen from "./screens/MapScreen";
 import JobDetailScreen from "./screens/JobDetailScreen";
 import ReviewScreen from "./screens/ReviewScreen";
 import SettingsScreen from "./screens/SettingsScreen";
+import ListJobScreen from './screens/ListJobScreen'
 
 class App extends React.Component {
   render() {
@@ -20,7 +21,17 @@ class App extends React.Component {
         auth: { screen: AuthScreen },
         main: {
           screen: TabNavigator({
-            map: { screen: MapScreen },
+            // map: { screen: MapScreen },
+            // map: StackNavigator({
+            //   mapview: { screen: MapScreen },
+            //   listjobs: { screen: ListJobScreen }
+            // })
+            map: {
+              screen: StackNavigator({
+                mapview: { screen: MapScreen },
+                joblist: { screen: ListJobScreen }
+              })
+            },
             jobdetail: { screen: JobDetailScreen },
             review: {
               screen: StackNavigator({
