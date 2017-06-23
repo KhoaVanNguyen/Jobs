@@ -6,7 +6,8 @@ export default class JobDetail extends Component {
     render(){
         return (
 
-            <View>
+            <View style = {styles.view} >
+                <Text style = { styles.text } > { this.props.data.formattedRelativeTime  }  </Text>
                 <Text style = { styles.text } > { this.props.data.jobtitle  }  </Text>
             </View>
 
@@ -15,9 +16,13 @@ export default class JobDetail extends Component {
 }
 
 const styles = {
+  view: {
+     borderWidth: 2,
+     borderColor: 'black'
+  },
   text: {
-    fontSize: 30,
-    color: "white",
+    fontSize: 20,
+    // color: "white",
     textAlign: 'center'
   }
 };

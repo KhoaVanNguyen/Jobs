@@ -21,17 +21,13 @@ class App extends React.Component {
         auth: { screen: AuthScreen },
         main: {
           screen: TabNavigator({
-            // map: { screen: MapScreen },
-            // map: StackNavigator({
-            //   mapview: { screen: MapScreen },
-            //   listjobs: { screen: ListJobScreen }
-            // })
-            map: {
-              screen: StackNavigator({
-                mapview: { screen: MapScreen },
-                joblist: { screen: ListJobScreen }
-              })
-            },
+            map: { screen: MapScreen },
+            // map: {
+            //   screen: StackNavigator({
+            //     mapview: { screen: MapScreen },
+            //     joblist: { screen: ListJobScreen }
+            //   })
+            // },
             jobdetail: { screen: JobDetailScreen },
             review: {
               screen: StackNavigator({
