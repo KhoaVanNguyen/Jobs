@@ -11,31 +11,41 @@ import MapScreen from "./screens/MapScreen";
 import JobDetailScreen from "./screens/JobDetailScreen";
 import ReviewScreen from "./screens/ReviewScreen";
 import SettingsScreen from "./screens/SettingsScreen";
-import ListJobScreen from './screens/ListJobScreen'
+import ListJobScreen from "./screens/ListJobScreen";
 
 class App extends React.Component {
   render() {
+    // All about objects :)) 
     const MainNavigator = TabNavigator(
       {
         welcome: { screen: WelcomeScreen },
         auth: { screen: AuthScreen },
         main: {
-          screen: TabNavigator({
-            map: { screen: MapScreen },
-            // map: {
-            //   screen: StackNavigator({
-            //     mapview: { screen: MapScreen },
-            //     joblist: { screen: ListJobScreen }
-            //   })
-            // },
-            jobdetail: { screen: JobDetailScreen },
-            review: {
-              screen: StackNavigator({
-                review: { screen: ReviewScreen },
-                settings: { screen: SettingsScreen }
-              })
+          screen: TabNavigator(
+            {
+              map: { screen: MapScreen },
+              // map: {
+              //   screen: StackNavigator({
+              //     mapview: { screen: MapScreen },
+              //     joblist: { screen: ListJobScreen }
+              //   })
+              // },
+              jobdetail: { screen: JobDetailScreen },
+              review: {
+                screen: StackNavigator({
+                  review: { screen: ReviewScreen },
+                  settings: { screen: SettingsScreen }
+                })
+              }
+            },
+            {
+              tabBarOptions: {
+                labelStyle: {
+                  fontSize: 12
+                }
+              }
             }
-          })
+          )
         }
       },
       {

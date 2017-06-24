@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, ScrollView, Linking } from "react-native";
-import { Button, Card } from "react-native-elements";
+import { Button, Card, Icon } from "react-native-elements";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import { MapView  } from 'expo'
@@ -17,7 +17,10 @@ class ReviewScreen extends Component {
             navigation.navigate("settings");
           }}
         />
-      )
+      ),
+       tabBarIcon: ({ tintColor }) => {
+                return <Icon name = 'remove-red-eye' size = {30} color = {tintColor} />
+        }
     };
   };
   renderItems = () => {

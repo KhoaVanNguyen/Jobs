@@ -3,12 +3,20 @@ import { View, Text, ListView, Dimensions} from "react-native";
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 import Swipe from '../components/Swipe'
-import { Button, Card } from 'react-native-elements'
+import { Button, Card, Icon } from 'react-native-elements'
 import { MapView } from 'expo'
 
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 class JobDetailScreen extends Component {
+
+   static navigationOptions = {
+        title: 'Details',
+        tabBarIcon: ({ tintColor }) => {
+                return <Icon name = 'filter-list' size = {30} color = {tintColor} />
+        }
+    }
+
   componentWillMount() {
 
   }
@@ -48,9 +56,12 @@ class JobDetailScreen extends Component {
   renderNoMoreCards = () => {
       return (
         <Card title = 'There is no job related' >
-          <Text style = {{ fontSize: 22 }}>
-            Back to see more
-          </Text>
+          <Button
+            title = 'View other jobs'
+            icon = { { name: 'my-location' }  }
+            onPress = { () => this.props.navigation.navigate('map')  }
+            backgroundColor = '#189'
+           />
         </Card>
       )
   }
