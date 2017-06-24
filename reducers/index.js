@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 import auth from './auth_reducer'
 import jobs from './job_reducer'
-import likedJob from './like_reducer'
+import likedJobs from './like_reducer'
 export default combineReducers({
     auth,
     jobs,
-    likedJob
+    likedJobs
 })

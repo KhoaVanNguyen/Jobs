@@ -1,7 +1,10 @@
 import axios from 'axios'
 import reverseGeocode from 'latlng-to-zip'
 import qs from 'qs'
-import { FETCH_JOBS_SUCCESS } from './type'
+import { FETCH_JOBS_SUCCESS, 
+         LIKE_JOB,
+         RESET_JOB
+ } from './type'
 
 const ROOT_QUERY_URL = 'http://api.indeed.com/ads/apisearch?'
 const JOB_QUERY_PARAMS = {
@@ -46,4 +49,11 @@ export const likeJob = (job) => {
         type: LIKE_JOB,
         payload: job
     }
+}
+export const resetJob = (onSuccess) => {
+    onSuccess()
+    return {
+        type: RESET_JOB,
+    }
+    
 }

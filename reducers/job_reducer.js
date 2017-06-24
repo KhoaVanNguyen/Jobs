@@ -1,4 +1,5 @@
-import { FETCH_JOBS_SUCCESS  } from '../actions/type'
+import { FETCH_JOBS_SUCCESS
+  } from '../actions/type'
 
 
 const INITIAL_STATE = {

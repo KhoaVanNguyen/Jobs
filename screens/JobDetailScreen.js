@@ -30,7 +30,7 @@ class JobDetailScreen extends Component {
           style = { { flex: 1 } }
           initialRegion = {initialRegion}
           scrollEnabled = {false}
-          
+          cacheEnabled
         /> 
       </View>
 
@@ -64,6 +64,7 @@ class JobDetailScreen extends Component {
           renderNoMoreCards = { this.renderNoMoreCards }
           keyProp = 'jobkey'
           onSwipeRight = { job => this.props.likeJob(job)  }
+          cacheEnabled = {true}
         />
       </View>
     );
