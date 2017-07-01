@@ -16,14 +16,14 @@ const JOB_QUERY_PARAMS = {
     latlong: 1
 }
 
-const buildQueryUrl = (zip) => {
-    let query = qs.stringify( { ...JOB_QUERY_PARAMS, l: zip  } )
+const buildQueryUrl = (zip,job) => {
+    let query = qs.stringify( { ...JOB_QUERY_PARAMS, l: zip, q: job  } )
     
     console.log('url: \n')
     console.log(`${ROOT_QUERY_URL}${query}`)
     return `${ROOT_QUERY_URL}${query}`
 }
-export const fetchJobs = (region, onSuccess) => async (dispatch) =>   {
+export const fetchJobs = (region, job, onSuccess) => async (dispatch) =>   {
     // let url = 'http://api.indeed.com/ads/apisearch?publisher=2771142258014455&q=java&l=austin%2C+tx&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=1&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2&format=json'
     // axios.get(url).then( response => {
     //     console.log(response)
@@ -32,7 +32,7 @@ export const fetchJobs = (region, onSuccess) => async (dispatch) =>   {
 
     try {
       let zipcode = await reverseGeocode(region)
-      const url = buildQueryUrl(zipcode)     
+      const url = buildQueryUrl(zipcode,job)     
       let { data } = await axios.get(url)
       // try payload with payloadsss
       console.log({ data })
